@@ -1,5 +1,6 @@
 package com.cybertek.controller;
 
+import com.cybertek.model.Student;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,7 +40,16 @@ public class StudentController {
         LocalDate birthday = LocalDate.now().minusYears(29);
         model.addAttribute("birthday", birthday);
 
+        //create model Student
+        Student student = new Student(1,"James", "Bond");
+        model.addAttribute("student", student);
+
         return "student/welcome";
+    }
+
+    @GetMapping("/register")
+    public String homePage2(){
+        return "student/register";
     }
 
 }
