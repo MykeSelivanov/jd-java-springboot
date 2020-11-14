@@ -15,6 +15,8 @@ public class Spring07SpringBootDemoApplication {
 		Course course = container.getBean("java", Course.class);
 		System.out.println(course.getTeachingHours());
 
+
+
 	}
 
 }
