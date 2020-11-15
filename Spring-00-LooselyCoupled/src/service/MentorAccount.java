@@ -11,7 +11,7 @@ public class MentorAccount {
     }
 
     public void manageAccount(){
-        this.mentor.createAcocunt();
+        this.mentor.createAccount();
     }
 
 }
