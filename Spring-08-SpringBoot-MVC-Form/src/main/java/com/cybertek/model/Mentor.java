@@ -17,8 +17,4 @@ public class Mentor {
     private String batch;
     private String company;
 
-
-
-
-
 }
