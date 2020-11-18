@@ -11,7 +11,7 @@
     </div>
 
     <div align="center">
-        <form th:object="${mentor}">
+        <form action="/mentor/confirm" method="post" th:object="${mentor}">
 
             <label>First Name:</label>
             <input type="text" id="firstName" th:field="*{firstName}"><br>
@@ -32,7 +32,12 @@
             <label>Batch #:</label>
             <select th:field="*{batch}">
                 <option th:each="theBatch : ${batchList}" th:value="${theBatch}" th:text="${theBatch}"></option>
-            </select>
+            </select><br>
+
+            <label>Company:</label>
+            <textarea th:field="*{company}"></textarea><br>
+
+            <button type="submit">Register</button>
 
         </form>
     </div>
