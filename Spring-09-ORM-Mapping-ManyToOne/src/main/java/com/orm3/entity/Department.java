@@ -21,5 +21,6 @@ public class Department extends BaseEntity {
     public Department(String department, String division) {
         this.department = department;
         this.division = division;
+
     }
 }

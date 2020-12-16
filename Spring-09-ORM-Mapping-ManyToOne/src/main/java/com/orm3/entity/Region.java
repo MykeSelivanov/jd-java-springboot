@@ -24,5 +24,6 @@ public class Region extends BaseEntity {
     public Region(String region, String country) {
         this.region = region;
         this.country = country;
+
     }
 }

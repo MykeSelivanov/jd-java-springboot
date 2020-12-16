@@ -42,5 +42,6 @@ public class Employee extends BaseEntity {
         this.hireDate = hireDate;
         this.gender = gender;
         this.salary = salary;
+
     }
 }

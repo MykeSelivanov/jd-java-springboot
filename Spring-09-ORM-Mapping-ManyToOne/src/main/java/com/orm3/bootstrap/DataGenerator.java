@@ -67,7 +67,6 @@ public class DataGenerator implements CommandLineRunner {
 
         employeeRepository.deleteById(1);
 
-
     }
 
 }
