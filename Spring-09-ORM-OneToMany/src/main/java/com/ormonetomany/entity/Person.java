@@ -21,8 +21,11 @@ public class Person {
     private String lastName;
 
     @OneToMany(mappedBy = "person")
-    @JoinColumn(name = "person_id")
     private List<Address> addresses;
+
+//    @OneToMany(mappedBy = "person")
+//    @JoinColumn(name = "person_id")
+//    private List<Address> addresses;
 
     public Person(String firstName, String lastName) {
         this.firstName = firstName;

@@ -19,9 +19,8 @@ public class Address {
     private String street;
     private String zipCode;
 
-//    @ManyToOne
-//    private Person person;
-
+    @ManyToOne
+    private Person person;
 
     public Address(String street, String zipCode) {
         this.street = street;
