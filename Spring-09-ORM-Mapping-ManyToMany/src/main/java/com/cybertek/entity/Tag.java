@@ -20,7 +20,7 @@ public class Tag {
 
     private String name;
 
-    @ManyToMany(mappedBy = "tags")
+    @ManyToMany(mappedBy = "tags", cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     private Set<Post> posts = new HashSet<>();
 
     public Tag(String name) {
