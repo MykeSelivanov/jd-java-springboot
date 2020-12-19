@@ -40,7 +40,7 @@ public class Movie extends BaseEntity {
     @JoinTable(name = "movie_genre_rel",
     joinColumns = @JoinColumn(name = "movie_id"),
     inverseJoinColumns = @JoinColumn(name = "genre_id"))
-    private Set<Genre> genre = new HashSet<>();
+    private Set<Genre> genreList = new HashSet<>();
 
     public Movie(String name, LocalDate releaseDate, Integer duration, String summary, MovieType type, MovieState state, BigDecimal price) {
         this.name = name;
