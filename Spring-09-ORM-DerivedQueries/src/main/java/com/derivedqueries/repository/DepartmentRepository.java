@@ -25,5 +25,5 @@ public interface DepartmentRepository extends JpaRepository<Department,String> {
     List<Department> findByDivisionEndingWith(String pattern);
 
     // Display top 3 departments with division name includes 'Hea', without dulpicates
-    List<Department> findDistinctTop3ByDivisionIsContaining(String pattern);
+    List<Department> findDistinctTop3ByDivisionContains(String pattern);
 }
