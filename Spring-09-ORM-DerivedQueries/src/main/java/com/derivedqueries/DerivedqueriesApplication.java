@@ -8,6 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.annotation.PostConstruct;
+import java.math.BigDecimal;
 
 @SpringBootApplication
 public class DerivedqueriesApplication {
@@ -59,9 +60,11 @@ public class DerivedqueriesApplication {
 	public void testEmployees(){
 		System.out.println("------------Employee start------------");
 
-		System.out.println(employeeRepository.findByEmail("ssymonds2@hhs.gov"));
-
-		//System.out.println("findByEmailIsNull: " + employeeRepository.findByEmailIsNull());
+		System.out.println("findByEmail: " + employeeRepository.findByEmail("amcnee1@google.es"));
+		System.out.println("findByFirstNameAndLastNameOrEmail: " + employeeRepository.findByFirstNameAndLastNameOrEmail("Berrie","Manueau","jhookd@booking.com"));
+		System.out.println("findBySalaryGreaterThan: " + employeeRepository.findBySalaryGreaterThan(new BigDecimal(100000)));
+		System.out.println("findDistinctTop3BySalaryLessThanEqual: " + employeeRepository.findDistinctTop3BySalaryLessThanEqual(new BigDecimal(50000)));
+		System.out.println("findByEmailIsNull: " + employeeRepository.findByEmailIsNull());
 
 		System.out.println("------------Employee End------------");
 

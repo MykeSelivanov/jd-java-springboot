@@ -15,6 +15,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
 public class Employee extends BaseEntity {
 
     @Column(name = "first_name")
@@ -29,7 +30,7 @@ public class Employee extends BaseEntity {
     @Column(columnDefinition = "DATE")
     private LocalDate hireDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "department")
     private Department department;
 
@@ -38,7 +39,7 @@ public class Employee extends BaseEntity {
 
     private BigDecimal salary;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "region_id")
     private Region region_id;
 
