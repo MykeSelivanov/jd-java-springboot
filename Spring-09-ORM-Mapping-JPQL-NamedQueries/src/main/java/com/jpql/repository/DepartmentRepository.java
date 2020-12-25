@@ -15,5 +15,10 @@ public interface DepartmentRepository extends JpaRepository<Department,String> {
 
     List<Department> retrieveDepartmentByDivision(String division);
 
+    // Named Native Query
+    @Query(nativeQuery = true)
+    List<Department> retrieveDepartmentByDivisionContains(String pattern);
+
+    List<Department> findMykeDepartment(String division);
 
 }

@@ -1,5 +1,6 @@
 package com.jpql;
 
+import com.jpql.repository.DepartmentRepository;
 import com.jpql.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -13,6 +14,8 @@ public class JpqlApplication {
 
 	@Autowired
 	EmployeeRepository employeeRepository;
+	@Autowired
+	DepartmentRepository departmentRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(JpqlApplication.class, args); }
@@ -31,7 +34,12 @@ public class JpqlApplication {
 			System.out.println(employeeRepository.getEmployeeBySalary(new BigDecimal(75283.00)));
 			System.out.println(employeeRepository.getEmployeeByFirstNameOrSalary("Jodi", new BigDecimal(77173.00)));
 
+			System.out.println("--------------------");
 			employeeRepository.updateEmployeeJPQL((long) 1);
+			System.out.println(employeeRepository.retrieveEmployeeSalaryGreaterThan(new BigDecimal(100000)));
+
+			System.out.println("--------------------");
+			System.out.println(departmentRepository.findMykeDepartment("Kids"));
 
 
 		}
