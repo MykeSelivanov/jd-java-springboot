@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.annotation.PostConstruct;
+import java.math.BigDecimal;
 
 @SpringBootApplication
 public class JpqlApplication {
@@ -21,6 +22,17 @@ public class JpqlApplication {
 
 			System.out.println(employeeRepository.getEmployeeDetail());
 			System.out.println(employeeRepository.getEmployeeSalary());
+			System.out.println("--------------------");
+
+			System.out.println(employeeRepository.getEmployeeByEmail("myakovlivf@ucsd.edu").get());
+			System.out.println(employeeRepository.getEmployeeByEmailAndSalary("myakovlivf@ucsd.edu", new BigDecimal(78141.00)).get());
+			System.out.println("--------------------");
+
+			System.out.println(employeeRepository.getEmployeeBySalary(new BigDecimal(75283.00)));
+			System.out.println(employeeRepository.getEmployeeByFirstNameOrSalary("Jodi", new BigDecimal(77173.00)));
+
+
+
 
 		}
 
