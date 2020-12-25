@@ -31,7 +31,7 @@ public class JpqlApplication {
 			System.out.println(employeeRepository.getEmployeeBySalary(new BigDecimal(75283.00)));
 			System.out.println(employeeRepository.getEmployeeByFirstNameOrSalary("Jodi", new BigDecimal(77173.00)));
 
-
+			employeeRepository.updateEmployeeJPQL((long) 1);
 
 
 		}
