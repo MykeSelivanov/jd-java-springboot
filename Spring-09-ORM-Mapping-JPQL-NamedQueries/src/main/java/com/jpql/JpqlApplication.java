@@ -40,6 +40,7 @@ public class JpqlApplication {
 
 			System.out.println("--------------------");
 			System.out.println(departmentRepository.findMykeDepartment("Kids"));
+			System.out.println(departmentRepository.countAllDepartments());
 
 
 		}
