@@ -46,15 +46,9 @@ public class Movie extends BaseEntity {
         this.name = name;
         this.releaseDate = releaseDate;
         this.duration = duration;
-        this.summary = summary;
         this.type = type;
         this.state = state;
         this.price = price;
     }
-
-
-
-
-
 
 }

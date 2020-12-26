@@ -31,9 +31,7 @@ public class MovieCinema extends BaseEntity {
     @Override
     public String toString() {
         return "MovieCinema{" +
-                "movie=" + movie +
-                ", cinema=" + cinema +
-                ", dateTime=" + dateTime +
+                "dateTime=" + dateTime +
                 '}';
     }
 }

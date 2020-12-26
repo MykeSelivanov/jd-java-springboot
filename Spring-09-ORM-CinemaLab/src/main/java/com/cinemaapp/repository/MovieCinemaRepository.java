@@ -23,7 +23,7 @@ public interface MovieCinemaRepository extends JpaRepository<MovieCinema,Long> {
     Integer countAllByCinemaId(Long cinemaId);
 
     //Write a derived query to count all movie cinemas with a specific movie id
-    Integer countAllByMovieId(Integer movieId);
+    Integer countAllByMovieId(Long movieId);
 
     //Write a derived query to list all movie cinemas with higher than a specific date
     List<MovieCinema> findAllByDateTimeAfter(LocalDateTime dateTime);
@@ -47,12 +47,12 @@ public interface MovieCinemaRepository extends JpaRepository<MovieCinema,Long> {
     // ------------------- Native QUERIES ------------------- //
 
     //Write a native query to count all movie cinemas by cinema id
-    //@Query(value = "SELECT count(*) FROM movie_cinema WHERE cinema_id = ?1",nativeQuery = true)
-    //Integer countByCinemaIdNativeQuery(Long CinemaId);
+    @Query(value = "SELECT count(*) FROM movie_cinema WHERE cinema_id = ?1",nativeQuery = true)
+    Integer countByCinemaIdNativeQuery(Long CinemaId);
 
     //Write a native query that returns all movie cinemas by location name
-    @Query(value = "SELECT * FROM movie_cineam JOIN cinema c on c.id = movie_cinema.cinema_id " +
-            "JOIN location l on c.location_id = l.id WHERE l.name = ?1",nativeQuery = true)
+    @Query(value = "SELECT * FROM movie_cinema JOIN cinema c on c.id = movie_cinema.cinema_id  " +
+            "JOIN location l on c.location_id=l.id WHERE l.name = ?1",nativeQuery = true)
     List<MovieCinema> retrieveAllByLocationName(String locationName);
 
 

@@ -3,6 +3,7 @@ package com.cinemaapp;
 import com.cinemaapp.repository.AccountRepository;
 import com.cinemaapp.repository.CinemaRepository;
 import com.cinemaapp.repository.MovieCinemaRepository;
+import com.cinemaapp.repository.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,8 +17,10 @@ public class CinemaappApplication {
 	AccountRepository accountRepository;
 	@Autowired
 	CinemaRepository cinemaRepository;
-	//@Autowired
-	//MovieCinemaRepository movieCinemaRepository;
+	@Autowired
+	MovieCinemaRepository movieCinemaRepository;
+	@Autowired
+	TicketRepository ticketRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CinemaappApplication.class, args);
@@ -33,8 +36,10 @@ public class CinemaappApplication {
 
 		System.out.println(cinemaRepository.distinctCinemaBySponsoredName());
 
-		//System.out.println(movieCinemaRepository.countByCinemaIdNativeQuery(4L));
-		//System.out.println(movieCinemaRepository.retrieveAllByLocationName("United States"));
+		System.out.println(movieCinemaRepository.countByCinemaIdNativeQuery(4L));
+		System.out.println(movieCinemaRepository.retrieveAllByLocationName("AMC Empire 25"));
+
+		System.out.println(ticketRepository.retrieveAllBySearchCriteria("it"));
 
 	}
 
