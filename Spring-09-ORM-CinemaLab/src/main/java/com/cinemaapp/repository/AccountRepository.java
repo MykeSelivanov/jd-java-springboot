@@ -39,7 +39,7 @@ public interface AccountRepository extends JpaRepository<Account,Long> {
     List<Account> fetchAllJPQL();
 
     //Write a JPQL query to list all addresses for admin accounts
-    @Query("SELECT a FROM Account a WHERE a.role = 'USER'")
+    @Query("SELECT a FROM Account a WHERE a.role = 'ADMIN'")
     List<Account> fetchAdminUsers();
 
     //Write a JPQL query to sort all accounts with age
