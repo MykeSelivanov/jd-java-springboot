@@ -5,7 +5,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -29,4 +28,12 @@ public class MovieCinema extends BaseEntity {
         this.dateTime = localDateTime;
     }
 
+    @Override
+    public String toString() {
+        return "MovieCinema{" +
+                "movie=" + movie +
+                ", cinema=" + cinema +
+                ", dateTime=" + dateTime +
+                '}';
+    }
 }
