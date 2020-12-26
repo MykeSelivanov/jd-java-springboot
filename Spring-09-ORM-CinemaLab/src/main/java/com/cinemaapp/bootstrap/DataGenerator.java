@@ -17,7 +17,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-@Component
+//@Component
 public class DataGenerator implements CommandLineRunner {
 
     private final MovieRepository movieRepository;
