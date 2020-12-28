@@ -4,6 +4,7 @@ import com.cinemaapp.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -18,13 +19,13 @@ public interface UserRepository extends JpaRepository<User,Long> {
     Optional<User> findByUsername(String userName);
 
     //Write a derived query to list all users that contain a specific name?
-
+    List<User> findAllByUsernameContaining(String pattern);
 
     //Write a derived query to list all users that contain a specific name in the ignore case mode?
-
+    List<User> findAllByUsernameContainingIgnoreCase(String userName);
 
     //Write a derived query to list all users with an age greater than a specified age?
-
+    List<User> findAllByAccountAgeIsGreaterThanEqual(Integer age);
 
     //--------------JPQL-----------------------------------------
 
