@@ -50,8 +50,9 @@ public class CinemaappApplication {
 		System.out.println(userRepository.findAllByUsernameContainingIgnoreCase("JOHNNIE"));
 		System.out.println(userRepository.findAllByAccountAgeIsGreaterThanEqual(36));
 		System.out.println(userRepository.fetchUserByEmail("bernard@email.com"));
+		System.out.println(userRepository.fetchUserByUsername("faith"));
 		System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-
+		System.out.println(userRepository.fetchAllUsers());
 
 	}
 

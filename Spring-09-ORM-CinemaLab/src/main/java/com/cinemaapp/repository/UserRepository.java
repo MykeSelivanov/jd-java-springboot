@@ -35,10 +35,12 @@ public interface UserRepository extends JpaRepository<User,Long> {
     Optional<User> fetchUserByEmail(String email);
 
     //Write a JPQL query that returns a user read by username?
-
+    @Query("SELECT u FROM User u WHERE u.username = ?1")
+    Optional<User> fetchUserByUsername(String userName);
 
     //Write a JPQL query that returns all users?
-
+    @Query("SELECT u FROM User u")
+    List<User> fetchAllUsers();
 
     //--------------------------------------NATIVE-------------
 
