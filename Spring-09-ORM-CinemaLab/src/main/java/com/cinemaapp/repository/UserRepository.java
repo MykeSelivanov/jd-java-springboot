@@ -4,16 +4,18 @@ import com.cinemaapp.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface UserRepository extends JpaRepository<User,Long> {
 
     //-------------------------DERIVED QUERIES-------------------------
 
     //Write a derived query to read a user with an email?
-
+    Optional<User> findByEmail(String email);
 
     //Write a derived query to read a user with a username?
-
+    Optional<User> findByUsername(String userName);
 
     //Write a derived query to list all users that contain a specific name?
 

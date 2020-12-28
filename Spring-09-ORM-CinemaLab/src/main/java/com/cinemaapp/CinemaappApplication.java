@@ -1,9 +1,6 @@
 package com.cinemaapp;
 
-import com.cinemaapp.repository.AccountRepository;
-import com.cinemaapp.repository.CinemaRepository;
-import com.cinemaapp.repository.MovieCinemaRepository;
-import com.cinemaapp.repository.TicketRepository;
+import com.cinemaapp.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,6 +18,8 @@ public class CinemaappApplication {
 	MovieCinemaRepository movieCinemaRepository;
 	@Autowired
 	TicketRepository ticketRepository;
+	@Autowired
+	UserRepository userRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CinemaappApplication.class, args);
@@ -40,6 +39,9 @@ public class CinemaappApplication {
 		System.out.println(movieCinemaRepository.retrieveAllByLocationName("AMC Empire 25"));
 
 		System.out.println(ticketRepository.retrieveAllBySearchCriteria("it"));
+
+		System.out.println("--------------------------------");
+		System.out.println(userRepository.findByEmail("bernard@email.com"));
 
 	}
 
