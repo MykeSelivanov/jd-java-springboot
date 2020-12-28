@@ -2,6 +2,7 @@ package com.cinemaapp.repository;
 
 import com.cinemaapp.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -30,7 +31,8 @@ public interface UserRepository extends JpaRepository<User,Long> {
     //--------------JPQL-----------------------------------------
 
     //Write a JPQL query that returns a user read by email?
-
+    @Query("SELECT u FROM User u WHERE u.email = ?1")
+    Optional<User> fetchUserByEmail(String email);
 
     //Write a JPQL query that returns a user read by username?
 
