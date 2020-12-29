@@ -59,7 +59,8 @@ public interface UserRepository extends JpaRepository<User,Long> {
     List<User> retrieveAllUsersInTheAgeRange(Integer age1, Integer age2);
 
     //Write a native query to read a user by email?
-
+    @Query(value = "SELECT ")
+    Optional<User> retrieveUserByEmail(String email);
 
 
 
