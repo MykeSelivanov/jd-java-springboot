@@ -55,6 +55,7 @@ public class CinemaappApplication {
 		System.out.println(userRepository.retrieveUsersWithNameContains("Bernard"));
 		System.out.println(userRepository.retrieveAllUsers());
 		System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+		System.out.println(userRepository.retrieveAllUsersInTheAgeRange(29,37));
 
 	}
 
