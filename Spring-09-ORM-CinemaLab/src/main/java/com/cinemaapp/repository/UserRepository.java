@@ -3,6 +3,7 @@ package com.cinemaapp.repository;
 import com.cinemaapp.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -59,8 +60,9 @@ public interface UserRepository extends JpaRepository<User,Long> {
     List<User> retrieveAllUsersInTheAgeRange(Integer age1, Integer age2);
 
     //Write a native query to read a user by email?
-    @Query(value = "SELECT ")
-    Optional<User> retrieveUserByEmail(String email);
+    @Query(value = "SELECT * FROM account_details ad JOIN user_account ua ON ad.id = ua.account_details_id " +
+            "WHERE ua.email = :email", nativeQuery = true)
+    Optional<User> retrieveUserByEmail(@Param("email") String email);
 
 
 
