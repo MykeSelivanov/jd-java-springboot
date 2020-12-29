@@ -50,10 +50,13 @@ public interface UserRepository extends JpaRepository<User,Long> {
     List<User> retrieveUsersWithNameContains(String pattern);
 
     //Write a native query that returns all users?
-
+    @Query(value = "SELECT * FROM user_account", nativeQuery = true)
+    List<User> retrieveAllUsers();
 
     //Write a native query that returns all users in the range of ages?
-
+    @Query(value = "SELECT * FROM user_account ua JOIN account_details ad ON ua.account_details_id = ad.id" +
+            "WHERE ad.age BETWEEN ?1 AND ?2", nativeQuery = true)
+    List<User> retrieveAllUsersInTheAgeRange(Integer age1, Integer age2);
 
     //Write a native query to read a user by email?
 
