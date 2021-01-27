@@ -16,7 +16,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Table(name = "account_details")
 @ToString
-@JsonIgnoreProperties(value = {"state","postalCode"})
+@JsonIgnoreProperties(value = {"state","postalCode"},ignoreUnknown = true)
 public class Account extends BaseEntity{
 
     private String name;

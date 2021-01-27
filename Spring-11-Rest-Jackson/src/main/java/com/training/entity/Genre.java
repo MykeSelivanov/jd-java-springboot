@@ -1,5 +1,7 @@
 package com.training.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,11 +15,13 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer"},ignoreUnknown = true)
 public class Genre extends BaseEntity{
 
     private String name;
 
     @ManyToMany(mappedBy = "genreList")
+    @JsonIgnore
     private Set<Movie> movieList = new HashSet<>();
 
     public Genre(String name) {
