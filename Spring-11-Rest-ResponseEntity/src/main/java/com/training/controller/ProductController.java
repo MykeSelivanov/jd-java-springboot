@@ -3,6 +3,11 @@ package com.training.controller;
 import com.training.entity.Product;
 import com.training.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,35 +25,60 @@ public class ProductController {
     }
 
     @GetMapping(value = "/{id}")
-    public Product getProduct(@PathVariable("id") Long id){
+    public ResponseEntity<Product> getProduct(@PathVariable("id") Long id){
 
-        return productService.getProduct(id);
+       return ResponseEntity
+               .ok(productService.getProduct(id));
     }
 
-    @GetMapping                     // if you don't put method, by default it's GET
-    public List<Product> getProducts(){
+    @GetMapping
+    public ResponseEntity<List<Product>> getProducts(){
 
-        return productService.getProducts();
+        HttpHeaders responseHttpHeaders = new HttpHeaders();
+        responseHttpHeaders.set("Version", "Training.v1");
+        responseHttpHeaders.set("Operation", "Get List");
+
+        return ResponseEntity
+                .ok()
+                .headers(responseHttpHeaders)
+                .body(productService.getProducts());
     }
 
-    //CREATE PRODUCT
+
     @PostMapping
-    public List<Product> createProduct(@RequestBody Product product){
+    public ResponseEntity<List<Product>> createProduct(@RequestBody Product product){
 
-        return productService.createProduct(product);
+        List<Product> set = productService.createProduct(product);
+
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .header("Version","Training.v1")
+                .header("Operation","Create")
+                .body(set);
     }
 
-    //DELETE PRODUCT
     @DeleteMapping(value = "/{id}")
-    public List<Product> deleteProduct(@PathVariable("id") Long id){
+    public ResponseEntity<List<Product>> deleteProduct(@PathVariable("id") Long id){
 
-        return productService.delete(id);
+        HttpHeaders responseHttpHeaders = new HttpHeaders();
+        responseHttpHeaders.set("Version", "Training.v1");
+        responseHttpHeaders.set("Operation", "Delete");
+
+        List<Product> list = productService.delete(id);
+
+        return new ResponseEntity<>(list, responseHttpHeaders, HttpStatus.OK);
     }
 
-    //UPDATE PRODUCT
+    // MultiValueMap
     @PutMapping(value = "/{id}")
-    public List<Product> updateProduct(@PathVariable("id") Long id, @RequestBody Product product){
+    public ResponseEntity<List<Product>> updateProduct(@PathVariable("id") Long id, @RequestBody Product product){
 
-        return productService.updateProduct(id, product);
+        MultiValueMap<String,String> map = new LinkedMultiValueMap<>();
+        map.add("Version","Training.v1");
+        map.add("Operation","Update");
+
+        List<Product> list = productService.updateProduct(id, product);
+
+        return new ResponseEntity<>(list, map, HttpStatus.OK);
     }
 }
