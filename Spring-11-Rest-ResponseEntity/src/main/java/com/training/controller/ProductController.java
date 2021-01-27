@@ -1,7 +1,9 @@
 package com.training.controller;
 
 import com.training.entity.Product;
+import com.training.entity.ResponseWrapper;
 import com.training.service.ProductService;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -81,4 +83,21 @@ public class ProductController {
 
         return new ResponseEntity<>(list, map, HttpStatus.OK);
     }
+
+    @GetMapping("/read")
+    public ResponseEntity<ResponseWrapper> readAllProducts(){
+        return ResponseEntity
+                .ok(new ResponseWrapper("products successfully retrieved", productService.getProducts()));
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<ResponseWrapper> deleteProduct2(@PathVariable("id") Long id){
+        return ResponseEntity.ok(new ResponseWrapper("product successfully deleted", productService.delete(id)));
+    }
+
+    @DeleteMapping("/delete2/{id}")
+    public ResponseEntity<ResponseWrapper> deleteProduct3(@PathVariable("id") Long id){
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(new ResponseWrapper("product successfully deleted", productService.delete(id)));
+    }
+
 }
