@@ -13,22 +13,26 @@ public class AddressServiceImpl implements AddressService {
     AddressRepository addressRepository;
 
     public AddressServiceImpl(AddressRepository addressRepository) {
+
         this.addressRepository = addressRepository;
     }
 
     @Override
     public Address getAddress(Long id) {
+
         return addressRepository.findById(id).get();
     }
 
     @Override
     public List<Address> getAddresses() {
+
         return addressRepository.findAll();
     }
 
     @Override
     public List<Address> deleteAddress(Long id) {
-        return null;
+        addressRepository.deleteById(id);
+        return addressRepository.findAll();
     }
 
     @Override
@@ -41,6 +45,7 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public List<Address> createAddress(Address address) {
-        return null;
+        addressRepository.save(address);
+        return addressRepository.findAll();
     }
 }
