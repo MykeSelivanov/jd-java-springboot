@@ -1,6 +1,6 @@
 package com.training.implementation;
 
-import com.training.entity.Address;
+import com.training.model.Address;
 import com.training.repository.AddressRepository;
 import com.training.service.AddressService;
 import org.springframework.stereotype.Service;

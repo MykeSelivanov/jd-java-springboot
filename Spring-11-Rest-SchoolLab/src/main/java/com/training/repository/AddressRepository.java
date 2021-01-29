@@ -1,6 +1,6 @@
 package com.training.repository;
 
-import com.training.entity.Address;
+import com.training.model.Address;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

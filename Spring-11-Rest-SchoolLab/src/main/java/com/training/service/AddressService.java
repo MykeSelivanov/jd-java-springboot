@@ -1,6 +1,6 @@
 package com.training.service;
 
-import com.training.entity.Address;
+import com.training.model.Address;
 
 import java.util.List;
 
