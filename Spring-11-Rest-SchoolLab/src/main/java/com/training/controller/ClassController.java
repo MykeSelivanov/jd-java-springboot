@@ -43,7 +43,7 @@ public class ClassController {
                 .body(classService.getClass(id));
     }
 
-    @PostMapping
+    @PostMapping("/new")
     public ResponseEntity<List<Class>> createClass(@RequestBody Class studentClass){
         List <Class> set = classService.createClass(studentClass);
 
