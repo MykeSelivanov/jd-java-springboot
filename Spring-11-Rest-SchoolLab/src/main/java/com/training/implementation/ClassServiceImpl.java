@@ -12,29 +12,38 @@ public class ClassServiceImpl implements ClassService {
 
     ClassRepository classRepository;
 
+    public ClassServiceImpl(ClassRepository classRepository) {
+        this.classRepository = classRepository;
+    }
+
     @Override
     public Class getClass(Long id) {
-        return null;
+        return classRepository.findById(id).get();
     }
 
     @Override
     public List<Class> getClasses() {
-        return null;
+        return classRepository.findAll();
     }
 
     @Override
     public List<Class> deleteClass(Long id) {
-        return null;
+        classRepository.deleteById(id);
+        return classRepository.findAll();
     }
 
     @Override
-    public List<Class> updateClass(Long id, Class address) {
-        return null;
+    public List<Class> updateClass(Long id, Class studyingClass) {
+        Class classEntity = classRepository.findById(id).get();
+        studyingClass.setId(classEntity.getId());
+        classRepository.save(studyingClass);
+        return classRepository.findAll();
     }
 
     @Override
-    public List<Class> createClass(Class address) {
-        return null;
+    public List<Class> createClass(Class studyingClass) {
+        classRepository.save(studyingClass);
+        return classRepository.findAll();
     }
 
 }
