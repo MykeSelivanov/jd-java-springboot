@@ -41,7 +41,7 @@ public class Teacher extends BaseEntity {
     @Column(name = "education_level")
     private EducationLevel educationLevel;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST}, fetch = FetchType.LAZY)
     @JoinColumn(name = "address_id")
     private Address address;
 

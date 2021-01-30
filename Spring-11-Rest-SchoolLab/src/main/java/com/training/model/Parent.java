@@ -39,7 +39,7 @@ public class Parent extends BaseEntity {
 
     private String profession;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST}, fetch = FetchType.LAZY)
     @JoinColumn(name = "address_id")
     private Address address;
 

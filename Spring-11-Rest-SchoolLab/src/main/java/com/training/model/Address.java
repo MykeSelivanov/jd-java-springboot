@@ -33,20 +33,20 @@ public class Address extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private AddressType addressType;
 
-    @OneToOne(mappedBy = "address")
-    @JsonBackReference
-    private Student student;
-
-    @OneToOne(mappedBy = "address")
-    @JsonIgnore
-    private Parent parent;
-
-    @OneToOne(mappedBy = "address")
-    private Teacher teacher;
+//    @OneToOne(mappedBy = "address")
+//    @JsonBackReference
+//    private Student student;
+//
+//    @OneToOne(mappedBy = "address")
+//    @JsonIgnore
+//    private Parent parent;
+//
+//    @OneToOne(mappedBy = "address")
+//    private Teacher teacher;
 
     private Integer currentTemperature;
 
-    private Integer geturrentTemperature(){
+    private Integer getCurrentTemperature(){
         return consumeTemp(this.city);
     }
 
