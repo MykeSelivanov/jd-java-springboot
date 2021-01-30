@@ -3,11 +3,9 @@ package com.training.controller;
 import com.training.model.Class;
 import com.training.service.ClassService;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,10 +21,9 @@ public class ClassController {
 
     @GetMapping("/all")
     public ResponseEntity<List<Class>> getClasses(){
-
         HttpHeaders responseHttpHeaders = new HttpHeaders();
         responseHttpHeaders.set("Version", "EducationApp.v1");
-        responseHttpHeaders.set("Operation", "Get List");
+        responseHttpHeaders.set("Operation", "Get Classes");
 
         return ResponseEntity
                 .ok()
@@ -36,7 +33,25 @@ public class ClassController {
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<Class> getClass(@PathVariable("id") Long id){
+        HttpHeaders responseHttpHeaders = new HttpHeaders();
+        responseHttpHeaders.set("Version", "EducationApp.v1");
+        responseHttpHeaders.set("Operation", "Get Class");
 
+        return ResponseEntity
+                .ok()
+                .headers(responseHttpHeaders)
+                .body(classService.getClass(id));
+    }
+
+    @PostMapping
+    public ResponseEntity<List<Class>> createClass(@RequestBody Class studentClass){
+        List <Class> set = classService.createClass(studentClass);
+
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .header("Version", "EducationApp.v1")
+                .header("Operation", "Create Class")
+                .body(set);
     }
 
 }
