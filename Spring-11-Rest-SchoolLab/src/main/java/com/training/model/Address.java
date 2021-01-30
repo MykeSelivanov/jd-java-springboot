@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Map;
 
 @Entity
 @Table(name = "address")
@@ -51,7 +52,14 @@ public class Address extends BaseEntity {
     }
 
     public Integer consumeTemp(String city){
-        return 5;
+        String BASE_URL = "http://api.weatherstack.com/current?access_key=02a009b8e3922c395677a1e85406aca6&query=";
+
+        String uri = BASE_URL + city;
+
+        Object currentWeather = restTemplate.getForObject(uri, Object.class);
+
+        Map<String,Object> getWeather = (Map<String,Object>) currentWeather;
+
     }
 
 }
