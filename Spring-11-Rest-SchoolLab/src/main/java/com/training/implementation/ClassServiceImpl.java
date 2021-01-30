@@ -33,16 +33,16 @@ public class ClassServiceImpl implements ClassService {
     }
 
     @Override
-    public List<Class> updateClass(Long id, Class studyingClass) {
+    public List<Class> updateClass(Long id, Class studentClass) {
         Class classEntity = classRepository.findById(id).get();
-        studyingClass.setId(classEntity.getId());
-        classRepository.save(studyingClass);
+        studentClass.setId(classEntity.getId());
+        classRepository.save(studentClass);
         return classRepository.findAll();
     }
 
     @Override
-    public List<Class> createClass(Class studyingClass) {
-        classRepository.save(studyingClass);
+    public List<Class> createClass(Class studentClass) {
+        classRepository.save(studentClass);
         return classRepository.findAll();
     }
 

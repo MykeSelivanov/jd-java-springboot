@@ -49,3 +49,8 @@ INSERT INTO public.course (description, name) VALUES ('It is a long established 
 INSERT INTO public.course (description, name) VALUES ('It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.', 'History');
 INSERT INTO public.course (description, name) VALUES ('It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.', 'Geography');
 INSERT INTO public.course (description, name) VALUES ('It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.', 'Biology');
+INSERT INTO public.class (name, year, course_id, teacher_id) VALUES ('PRE-K', 2017, 1, 2);
+INSERT INTO public.class (name, year, course_id, teacher_id) VALUES ('Kindergarten', 2016, 2, 2);
+INSERT INTO public.class (name, year, course_id, teacher_id) VALUES ('1st grade', 2015, 5, 2);
+INSERT INTO public.class (name, year, course_id, teacher_id) VALUES ('10th grade', 2007, 4, 1);
+INSERT INTO public.class (name, year, course_id, teacher_id) VALUES ('9th grade', 2017, 6, 5);
