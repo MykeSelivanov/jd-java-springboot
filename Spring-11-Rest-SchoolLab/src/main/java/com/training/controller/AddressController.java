@@ -4,12 +4,10 @@ import com.training.model.Address;
 import com.training.service.AddressService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/address")
@@ -32,6 +30,11 @@ public class AddressController {
     public ResponseEntity<Address> getAddress(@PathVariable("id") Long id){
         return ResponseEntity
                 .ok(addressService.getAddress(id));
+    }
+
+    @PutMapping("/{id}")
+    public Address updateAddress(@PathVariable("id") Long id, @RequestBody Address address) throws Exception {
+        return addressService.updateAddress(id, address);
     }
 
 

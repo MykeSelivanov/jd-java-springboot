@@ -15,9 +15,9 @@ public class ParentController {
         this.parentRepository = parentRepository;
     }
 
-    @GetMapping("/parents")
-    public ResponseEntity<ResponseWrapper> readAllParents(){
-        ResponseWrapper responseWrapper =
-    }
+//    @GetMapping("/parents")
+//    public ResponseEntity<ResponseWrapper> readAllParents(){
+//        ResponseWrapper responseWrapper =
+//    }
 
 }

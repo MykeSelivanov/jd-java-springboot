@@ -9,7 +9,7 @@ public interface AddressService {
     Address getAddress(Long id);
     List<Address> getAddresses();
     List<Address> deleteAddress(Long id);
-    List<Address> updateAddress(Long id, Address address);
+    Address updateAddress(Long id, Address address) throws Exception;
     List<Address> createAddress(Address address);
 
 }

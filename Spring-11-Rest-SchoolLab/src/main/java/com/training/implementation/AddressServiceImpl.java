@@ -6,6 +6,7 @@ import com.training.service.AddressService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AddressServiceImpl implements AddressService {
@@ -36,11 +37,14 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public List<Address> updateAddress(Long id, Address address) {
-        Address addressEntity = addressRepository.findById(id).get();
-        address.setId(addressEntity.getId());
-        addressRepository.save(address);
-        return addressRepository.findAll();
+    public Address updateAddress(Long id, Address address) throws Exception {
+        Optional<Address> addressEntity = addressRepository.findById(id);
+        if (!addressEntity.isPresent()) {
+            throw new Exception("Address does not exist");
+        }
+        address.setId(addressEntity.get().getId());
+        address.setCurrentTemperature(new Address().consumeTemp(address.getCity()));
+        return addressRepository.save(address);
     }
 
     @Override
