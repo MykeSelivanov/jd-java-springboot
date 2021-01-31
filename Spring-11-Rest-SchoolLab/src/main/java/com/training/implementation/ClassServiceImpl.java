@@ -1,11 +1,13 @@
 package com.training.implementation;
 
 import com.training.model.Class;
+import com.training.model.Parent;
 import com.training.repository.ClassRepository;
 import com.training.service.ClassService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ClassServiceImpl implements ClassService {
@@ -33,11 +35,13 @@ public class ClassServiceImpl implements ClassService {
     }
 
     @Override
-    public List<Class> updateClass(Long id, Class studentClass) {
-        Class classEntity = classRepository.findById(id).get();
-        studentClass.setId(classEntity.getId());
-        classRepository.save(studentClass);
-        return classRepository.findAll();
+    public Class updateClass(Long id, Class studentClass) throws Exception {
+        Optional<Class> classEntity = classRepository.findById(id);
+        if (!classEntity.isPresent()) {
+            throw new Exception("Address does not exist");
+        }
+        studentClass.setId(classEntity.get().getId());
+        return classRepository.save(studentClass);
     }
 
     @Override

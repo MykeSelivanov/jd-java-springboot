@@ -9,7 +9,7 @@ public interface ClassService {
     Class getClass(Long id);
     List<Class> getClasses();
     List<Class> deleteClass(Long id);
-    List<Class> updateClass(Long id, Class studentClass);
+    Class updateClass(Long id, Class studentClass) throws Exception;
     List<Class> createClass(Class studentClass);
 
 }
