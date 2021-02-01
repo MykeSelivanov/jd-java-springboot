@@ -57,7 +57,9 @@ public class AddressServiceImpl implements AddressService {
     @Override
     public List<Address> createAddress(Address address) {
         addressRepository.save(address);
-        return addressRepository.findAll();
+        List<Address> addressList = addressRepository.findAll();
+        addressList.stream().forEach(addressEntity -> addressEntity.setCurrentTemperature(consumeTemp(addressEntity.getCity())));
+        return addressList;
     }
 
     public Integer consumeTemp(String city){
