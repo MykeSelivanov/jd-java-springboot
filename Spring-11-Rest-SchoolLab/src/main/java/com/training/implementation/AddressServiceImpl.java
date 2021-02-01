@@ -23,13 +23,14 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public Address getAddress(Long id) {
-
-        return addressRepository.findById(id).get();
+        Address addressEntity = addressRepository.findById(id).get();
+        addressEntity.setCurrentTemperature(consumeTemp(addressEntity.getCity()));
+        return addressEntity;
     }
 
     @Override
     public List<Address> getAddresses() {
-
+        List<>
         return addressRepository.findAll();
     }
 
