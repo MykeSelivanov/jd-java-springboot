@@ -14,6 +14,10 @@ public class ParentServiceImpl implements ParentService {
 
     ParentRepository parentRepository;
 
+    public ParentServiceImpl(ParentRepository parentRepository) {
+        this.parentRepository = parentRepository;
+    }
+
     @Override
     public Parent getParent(Long id) {
         return parentRepository.findById(id).get();
@@ -42,6 +46,7 @@ public class ParentServiceImpl implements ParentService {
 
     @Override
     public List<Parent> createParent(Parent parent) {
-        return null;
+        parentRepository.save(parent);
+        return parentRepository.findAll();
     }
 }
