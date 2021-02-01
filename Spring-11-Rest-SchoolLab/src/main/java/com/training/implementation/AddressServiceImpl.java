@@ -30,14 +30,17 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public List<Address> getAddresses() {
-        List<>
-        return addressRepository.findAll();
+        List<Address> addressList = addressRepository.findAll();
+        addressList.stream().forEach(address -> address.setCurrentTemperature(consumeTemp(address.getCity())));
+        return addressList;
     }
 
     @Override
     public List<Address> deleteAddress(Long id) {
         addressRepository.deleteById(id);
-        return addressRepository.findAll();
+        List<Address> addressList = addressRepository.findAll();
+        addressList.stream().forEach(address -> address.setCurrentTemperature(consumeTemp(address.getCity())));
+        return addressList;
     }
 
     @Override
