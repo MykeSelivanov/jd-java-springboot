@@ -1,24 +1,24 @@
 package com.training.controller;
 
 import com.training.model.ResponseWrapper;
-import com.training.repository.StudentRepository;
+import com.training.service.StudentService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class StudentsController {
+public class StudentController {
 
-    StudentRepository studentRepository;
+    StudentService studentService;
 
-    public StudentsController(StudentRepository studentRepository) {
-        this.studentRepository = studentRepository;
+    public StudentController(StudentService studentService) {
+        this.studentService = studentService;
     }
 
     @GetMapping("/students")
     public ResponseEntity<ResponseWrapper> readAllStudents(){
         return ResponseEntity
-               .ok(new ResponseWrapper("Students are successfully retrieved", studentRepository.findAll()));
+               .ok(new ResponseWrapper("Students are successfully retrieved", studentService.getStudents()));
     }
 
 }
