@@ -19,12 +19,12 @@ public class JWTUtil {
     @Value("${security.jwt.secret-key}")
     private String secret = "cybertek";
 
-    public String generateToken(User user, String username){
+    public String generateToken(User user){
 
         Map<String,Object> claims = new HashMap<>();
         claims.put("username", user.getUsername());
         claims.put("email", user.getEmail());
-        return createToken(claims, username);
+        return createToken(claims, user.getUsername());
 
     }
 
