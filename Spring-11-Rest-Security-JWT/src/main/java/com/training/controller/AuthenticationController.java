@@ -1,8 +1,10 @@
 package com.training.controller;
 
+import com.training.annotation.DefaultExceptionMessage;
 import com.training.entity.AuthenticationRequest;
 import com.training.entity.ResponseWrapper;
 import com.training.entity.User;
+import com.training.exception.ServiceException;
 import com.training.service.UserService;
 import com.training.util.JWTUtil;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +28,7 @@ public class AuthenticationController {
     }
 
     @PostMapping("/authenticate")
+    @DefaultExceptionMessage(defaultMessage = "Bad Credentials")
     public ResponseEntity<ResponseWrapper> doLogin(@RequestBody AuthenticationRequest authenticationRequest){
 
         String password = authenticationRequest.getPassword();
@@ -40,6 +43,13 @@ public class AuthenticationController {
 
         return ResponseEntity.ok(new ResponseWrapper("Login Successful!", jwtToken));
 
+    }
+
+    @PostMapping("/create-user")
+    @DefaultExceptionMessage(defaultMessage = "Failed to create user, please try again")
+    public ResponseEntity<ResponseWrapper> createAccount(@RequestBody User user) throws ServiceException {
+        User createdUser = userService.createUser(user);
+        return ResponseEntity.ok(new ResponseWrapper("User has been created successfully", createdUser));
     }
 
 }
