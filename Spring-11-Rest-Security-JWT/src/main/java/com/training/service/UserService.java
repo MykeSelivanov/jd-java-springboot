@@ -2,8 +2,8 @@ package com.training.service;
 
 import com.training.entity.User;
 import com.training.enums.UserState;
+import com.training.exception.ServiceException;
 import com.training.repository.UserRepository;
-import org.hibernate.service.spi.ServiceException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
