@@ -3,6 +3,8 @@ package com.training.controller;
 import com.training.entity.Product;
 import com.training.entity.ResponseWrapper;
 import com.training.service.ProductService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -19,6 +21,8 @@ public class ProductController {
 
     ProductService productService;
 
+    Logger logger = LoggerFactory.getLogger(ProductController.class);
+
     @Autowired
     public ProductController(ProductService productService) {
 
@@ -33,16 +37,15 @@ public class ProductController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Product>> getProducts(){
+    public List<Product> getProducts(){
 
-        HttpHeaders responseHttpHeaders = new HttpHeaders();
-        responseHttpHeaders.set("Version", "Training.v1");
-        responseHttpHeaders.set("Operation", "Get List");
+        logger.info("Before -> Controller:{} - Method:{} - Input Parameter :{}","ProductController", "getProducts()");
 
-        return ResponseEntity
-                .ok()
-                .headers(responseHttpHeaders)
-                .body(productService.getProducts());
+        List<Product> list = productService.getProducts();
+
+        logger.info("After -> Controller:{} - Method:{} - Output Parameters:{}","ProductController","getProducts",list);
+
+        return list;
     }
 
 
