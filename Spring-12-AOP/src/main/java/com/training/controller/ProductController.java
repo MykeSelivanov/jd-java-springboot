@@ -31,16 +31,13 @@ public class ProductController {
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<Product> getProduct(@PathVariable("id") Long id){
-
        return ResponseEntity
                .ok(productService.getProduct(id));
     }
 
     @GetMapping
     public List<Product> getProducts(){
-
         List<Product> list = productService.getProducts();
-
         return list;
     }
 
