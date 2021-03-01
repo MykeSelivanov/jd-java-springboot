@@ -33,7 +33,7 @@ class CalculatorTest {
     @Test
     void testCase1(){
         System.out.println("TC 1 executed");
-//        fail("Not implemented yet");
+        fail("Not implemented yet");
     }
 
     @Test
