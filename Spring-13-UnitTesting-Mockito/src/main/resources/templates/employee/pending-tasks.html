@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/fragments/head :: header"></head>
+
+<body>
+
+<div class="dashboard-main-wrapper">
+
+    <div th:replace="/fragments/header :: header"></div>
+
+    <div th:replace="/fragments/left-sidebar :: left-sidebar"></div>
+
+    <div class="dashboard-wrapper">
+
+        <div class="dashboard-ecommerce">
+
+            <div class="container-fluid dashboard-content">
+
+                <div class="ecommerce-widget">
+
+                    <div class="row">
+
+                        <div class="col-lg-6 col-md-12">
+
+                            <section class="panel panel-transparent">
+                                <header class="panel-heading">
+                                    <h2 class="panel-title">Task Assigned</h2>
+                                </header>
+
+                                <div class="panel-body">
+
+                                    <!-- ------------------------FORM START----------------------------- -->
+                                    <form class="needs-validation" novalidate>
+
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label>Project</label>
+                                                    <select class="custom-select" required="required" disabled="disabled">
+                                                        <option th:value=" ''" th:text="Select"></option>
+                                                    </select>
+                                                    <div class="invalid-feedback">Please choose project</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label>Assigned Employee</label>
+                                                    <select class="custom-select" required="required" disabled="disabled">
+                                                        <option th:value=" ''" th:text="Select"></option>
+                                                    </select>
+                                                    <div class="invalid-feedback">Please choose employee</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label class="col-form-label">Task Subject</label>
+                                                    <input id="tasksubject" type="text" placeholder="Task Subject" class="form-control" required readonly>
+                                                    <div class="invalid-feedback">Please enter task subject</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label>Detail</label>
+                                                    <textarea class="form-control" required readonly></textarea>
+                                                    <div class="invalid-feedback">Please enter task detail</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label>Status</label>
+                                                    <select class="custom-select" required="required">
+                                                        <option th:value=" ''" th:text="Select"></option>
+                                                    </select>
+                                                    <div class="invalid-feedback">You need to chose task from the list below before updating Status!</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="float-right">
+                                                    <button class="btn btn-success" type="submit">Save</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </form>
+                                    <!-- ------------------------FORM END----------------------------- -->
+
+                                </div>
+
+                            </section>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ------------------------TABLE START----------------------------- -->
+
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="col-md-12">
+                            <section class="panel">
+                                <header class="panel-heading">
+                                    <h2 class="panel-title">Task List</h2>
+                                </header>
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">Project</th>
+                                                <th scope="col">Task Subject</th>
+                                                <th scope="col">Assigned Employee</th>
+                                                <th scope="col">Assigned Date</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">Action</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr th:each="task : ${tasks}">
+                                                <td th:text="${task.project.projectName}"></td>
+                                                <td th:text="${task.taskSubject}"></td>
+                                                <td th:text="${task.assignedEmployee.firstName + ' ' + task.assignedEmployee.lastName}"></td>
+                                                <td th:text="${task.assignedDate}"></td>
+                                                <td th:text="${task.taskStatus}"></td>
+
+                                                <td>
+                                                    <a th:href="@{/task/employee/pending-task/update/{id}(id=${task.getId()})}" class="btn btn-warning btn-sm">Update</a>
+                                                </td>
+
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ------------------------TABLE END----------------------------- -->
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div th:replace="/fragments/footer :: footer"></div>
+
+</div>
+
+<div th:replace="/fragments/javascript :: js"></div>
+
+</body>
+
+</html>
