@@ -3,13 +3,15 @@ package com.training.implementation;
 import com.training.repository.DataRepository;
 import com.training.repository.DataRepositoryImpl;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.when;
-
+@ExtendWith(MockitoExtension.class)
 class UnitTestingImplTest {
 
     @Mock
@@ -44,7 +46,7 @@ class UnitTestingImplTest {
         int actual2 = unitTesting.calculateSumUsingDataService();
 
         assertEquals(6, actual);
-        assertEquals(15, actual);
+        assertEquals(15, actual2);
     }
 
     @Test

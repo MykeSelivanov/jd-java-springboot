@@ -1,7 +1,6 @@
 package com.training.implementation;
 
 import com.training.repository.DataRepository;
-import com.training.repository.DataRepositoryImpl;
 
 import java.util.Arrays;
 
