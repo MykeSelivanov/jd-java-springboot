@@ -13,7 +13,9 @@ public class UnitTestingImpl {
         this.dataRepository = dataRepository;
     }
 
+    public UnitTestingImpl( ) {
 
+    }
 
     // hard coded data
     public int calculateSum(int [] data){

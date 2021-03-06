@@ -7,6 +7,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.when;
 
 class UnitTestingImplTest {
@@ -45,5 +46,13 @@ class UnitTestingImplTest {
         assertEquals(6, actual);
         assertEquals(15, actual);
     }
+
+    @Test
+    void calculateSumUsingDataService_Mock_withParameter(){
+        when(dataRepository.findById(anyInt())).thenReturn(new int[] {10,10,10});
+        int actual = unitTesting.calculateSumUsingDataService_withParameter();
+        assertEquals(30, actual);
+    }
+
 
 }
