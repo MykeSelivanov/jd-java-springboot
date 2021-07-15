@@ -1,6 +1,6 @@
 # jd-java-springboot
 Cheat-sheet repository for building SpringBoot applications <br>
-Module names are self explanatory
+Module names are self explanatory and contain practical examples to explain the concept
 
 ## Technologies
 - Spring
@@ -30,8 +30,10 @@ Module names are self explanatory
     - Mockito
     - MockMVC
 
-# Usage
-Clone and enjoy!
+# How to run
+Clone the repo <br>
+Each module contains a runner file -> look for java file that ends with ```...App.java``` or java file with ```@SpringBootApplication``` annotation and main class <br>
+Preferable IDE - InteliJ
 
 # License
 Free to use
